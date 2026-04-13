@@ -11,6 +11,8 @@
     dir="{{ core()->getCurrentLocale()->direction }}"
 >
     <head>
+
+    
 <!-- Meta Pixel Code -->
 <script>
 !function(f,b,e,v,n,t,s)
