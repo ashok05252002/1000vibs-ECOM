@@ -131,7 +131,58 @@
                         </div>
                     </div>
                 </div>
+
+                <!-- Exit Intent Popup -->
+                <v-exit-intent-popup :cart="cart"></v-exit-intent-popup>
             </template>
+        </script>
+
+        <script
+            type="text/x-template"
+            id="v-exit-intent-popup-template"
+        >
+            <x-shop::modal ref="exitIntentModal">
+                <x-slot:header>
+                    <div class="flex flex-col items-center text-center p-4">
+                        <h2 class="text-3xl font-bold text-navyBlue mb-2">Wait! Don't Leave Yet!</h2>
+                        <p class="text-lg text-gray-600">We have a special gift for you.</p>
+                    </div>
+                </x-slot>
+
+                <x-slot:content>
+                    <div class="flex flex-col items-center text-center p-6 bg-blue-50 rounded-2xl">
+                        <div class="mb-4">
+                            <span class="text-5xl">🎁</span>
+                        </div>
+                        <p class="text-xl font-medium mb-4">
+                            Apply coupon <span class="bg-navyBlue text-white px-3 py-1 rounded font-bold">VIBE1000</span> and get 
+                            <span class="text-2xl font-bold text-red-600 block my-2">5% OFF EXTRA!</span>
+                            <span class="text-sm text-navyBlue font-semibold" v-if="discountAmount > 0">
+                                (You save approx. @{{ formattedDiscountAmount }})
+                            </span>
+                        </p>
+                        <p class="text-sm text-gray-500 italic">This exclusive offer is only available right now!</p>
+                    </div>
+                </x-slot>
+
+                <x-slot:footer>
+                    <div class="flex flex-col w-full gap-4 items-center">
+                        <x-shop::button
+                            class="primary-button w-full rounded-2xl py-4 text-xl font-bold uppercase tracking-wider"
+                            title="Apply Discount Now"
+                            @click="applyAndClose"
+                        />
+                        
+                        <button 
+                            type="button"
+                            class="text-gray-400 hover:text-gray-600 transition-colors underline text-sm"
+                            @click="$refs.exitIntentModal.toggle()"
+                        >
+                            No thanks, I'll pay full price
+                        </button>
+                    </div>
+                </x-slot>
+            </x-shop::modal>
         </script>
 
         <script type="module">
@@ -238,6 +289,125 @@
                             });
                     }
                 },
+            });
+
+            app.component('v-exit-intent-popup', {
+                template: '#v-exit-intent-popup-template',
+
+                props: ['cart'],
+
+                data() {
+                    return {
+                        shown: false,
+
+                        lastScrollTop: 0,
+                    }
+                },
+
+                computed: {
+                    discountAmount() {
+                        if (! this.cart || ! this.cart.sub_total) return 0;
+
+                        return (parseFloat(this.cart.sub_total) * 0.05);
+                    },
+
+                    formattedDiscountAmount() {
+                        if (! this.discountAmount) return '';
+
+                        // Simple formatting, ideally use a currency helper if available
+                        let symbol = this.cart.formatted_sub_total.replace(/[0-9.,\s]/g, '');
+                        return symbol + this.discountAmount.toFixed(2);
+                    }
+                },
+
+                mounted() {
+                    /**
+                     * Mouse leave top detection (Desktop)
+                     */
+                    document.addEventListener('mouseleave', this.handleMouseLeave);
+
+                    /**
+                     * Back button detection (Mobile/Desktop)
+                     */
+                    history.pushState(null, null, window.location.href);
+                    window.addEventListener('popstate', this.handlePopState);
+
+                    /**
+                     * Visibility change (Mobile/Desktop - Tab switching)
+                     */
+                    document.addEventListener('visibilitychange', this.handleVisibilityChange);
+
+                    /**
+                     * Rapid scroll up detection (Mobile)
+                     */
+                    window.addEventListener('scroll', this.handleScroll);
+                },
+
+                beforeUnmount() {
+                    document.removeEventListener('mouseleave', this.handleMouseLeave);
+                    window.removeEventListener('popstate', this.handlePopState);
+                    document.removeEventListener('visibilitychange', this.handleVisibilityChange);
+                    window.removeEventListener('scroll', this.handleScroll);
+                },
+
+                methods: {
+                    handleMouseLeave(e) {
+                        if (this.shown || (this.cart && this.cart.coupon_code)) return;
+
+                        if (e.clientY <= 0) {
+                            this.showPopup();
+                        }
+                    },
+
+                    handlePopState() {
+                        if (this.shown || (this.cart && this.cart.coupon_code)) return;
+
+                        this.showPopup();
+                        
+                        // Push state again so they stay on the page
+                        history.pushState(null, null, window.location.href);
+                    },
+
+                    handleVisibilityChange() {
+                        if (document.visibilityState === 'visible') {
+                            if (this.shown || (this.cart && this.cart.coupon_code)) return;
+                            
+                            // Optional: delay slightly to let the user settle back
+                            setTimeout(() => {
+                                if (document.visibilityState === 'visible') {
+                                    this.showPopup();
+                                }
+                            }, 500);
+                        }
+                    },
+
+                    handleScroll() {
+                        let st = window.pageYOffset || document.documentElement.scrollTop;
+                        
+                        // Detect rapid scroll up near the top (within 100px of top)
+                        if (st < this.lastScrollTop && st < 100) {
+                            let diff = this.lastScrollTop - st;
+                            
+                            if (diff > 25) { // Rapid scroll threshold
+                                if (! this.shown && ! (this.cart && this.cart.coupon_code)) {
+                                    this.showPopup();
+                                }
+                            }
+                        }
+                        
+                        this.lastScrollTop = st <= 0 ? 0 : st;
+                    },
+
+                    showPopup() {
+                        this.shown = true;
+                        this.$refs.exitIntentModal.toggle();
+                    },
+
+                    applyAndClose() {
+                        this.$emitter.emit('apply-coupon', 'VIBE1000');
+                        this.$refs.exitIntentModal.toggle();
+                    }
+                }
             });
         </script>
     @endPushOnce

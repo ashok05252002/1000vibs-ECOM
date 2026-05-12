@@ -126,6 +126,12 @@
             
             props: ['cart'],
 
+            mounted() {
+                this.$emitter.on('apply-coupon', (code) => {
+                    this.applyCoupon({ code }, { resetForm: () => {} }, true);
+                });
+            },
+
             data() {
                 return {
                     isStoring: false,
@@ -133,7 +139,7 @@
             },
 
             methods: {
-                applyCoupon(params, { resetForm }) {
+                applyCoupon(params, { resetForm }, isProgrammatic = false) {
                     this.isStoring = true;
 
                     this.$axios.post("{{ route('shop.api.checkout.cart.coupon.apply') }}", params)
@@ -144,14 +150,18 @@
                   
                             this.$emitter.emit('add-flash', { type: 'success', message: response.data.message });
 
-                            this.$refs.couponModel.toggle();
+                            if (! isProgrammatic) {
+                                this.$refs.couponModel.toggle();
+                            }
 
                             resetForm();
                         })
                         .catch((error) => {
                             this.isStoring = false;
 
-                            this.$refs.couponModel.toggle();
+                            if (! isProgrammatic) {
+                                this.$refs.couponModel.toggle();
+                            }
 
                             if ([400, 422].includes(error.response.request.status)) {
                                 this.$emitter.emit('add-flash', { type: 'warning', message: error.response.data.message });
