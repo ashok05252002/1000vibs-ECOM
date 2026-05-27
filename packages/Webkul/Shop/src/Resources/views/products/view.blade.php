@@ -70,6 +70,73 @@
         <x-shop::shimmer.products.view />
     </v-product>
 
+    <!-- Trust Badges -->
+    <div class="container mt-12 px-[60px] max-1180:px-5">
+        <div class="flex gap-6 overflow-x-auto pb-4 no-scrollbar md:grid md:grid-cols-4 md:gap-6 md:pb-0">
+            <!-- Feature 1: 7-day replacement -->
+            <div class="flex items-center gap-4 p-4 rounded-2xl bg-zinc-50 border border-zinc-100 hover:border-black/10 hover:shadow-md transition-all duration-300 group shrink-0 w-[270px] md:w-auto md:shrink">
+                <div class="flex items-center justify-center w-12 h-12 rounded-xl bg-black/5 group-hover:bg-black group-hover:text-white text-black transition-all duration-300 shrink-0">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.8" stroke="currentColor" class="w-6 h-6">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0 3.181 3.183a8.25 8.25 0 0 0 13.803-3.7M4.031 9.865a8.25 8.25 0 0 1 13.803-3.7l3.181 3.182m0-4.991v4.99" />
+                    </svg>
+                </div>
+                <div>
+                    <p class="text-base font-semibold text-zinc-900">7-Day Replacement</p>
+                    <p class="text-sm text-zinc-500">Easy returns if damaged</p>
+                </div>
+            </div>
+
+            <!-- Feature 2: Cash on Delivery -->
+            <div class="flex items-center gap-4 p-4 rounded-2xl bg-zinc-50 border border-zinc-100 hover:border-black/10 hover:shadow-md transition-all duration-300 group shrink-0 w-[270px] md:w-auto md:shrink">
+                <div class="flex items-center justify-center w-12 h-12 rounded-xl bg-black/5 group-hover:bg-black group-hover:text-white text-black transition-all duration-300 shrink-0">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.8" stroke="currentColor" class="w-6 h-6">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 18.75a60.07 60.07 0 0 1 15.797 2.101c.727.198 1.453-.342 1.453-1.096V18.75M3.75 4.5h16.5M5.25 7.5h13.5m-15 3h16.5M5.25 13.5h13.5m-15 3h16.5m0 0v1.5a2.25 2.25 0 0 1-2.25 2.25H6.75a2.25 2.25 0 0 1-2.25-2.25V16.5m15 0V7.5" />
+                    </svg>
+                </div>
+                <div>
+                    <p class="text-base font-semibold text-zinc-900">Cash on Delivery</p>
+                    <p class="text-sm text-zinc-500">Pay when you receive</p>
+                </div>
+            </div>
+
+            <!-- Feature 3: Free shipping Tamil Nadu / India -->
+            <div class="flex items-center gap-4 p-4 rounded-2xl bg-zinc-50 border border-zinc-100 hover:border-black/10 hover:shadow-md transition-all duration-300 group shrink-0 w-[270px] md:w-auto md:shrink">
+                <div class="flex items-center justify-center w-12 h-12 rounded-xl bg-black/5 group-hover:bg-black group-hover:text-white text-black transition-all duration-300 shrink-0">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.8" stroke="currentColor" class="w-6 h-6">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 18.75a1.5 1.5 0 0 1-3 0m3 0a1.5 1.5 0 0 0-3 0m3 0h6m-9 0H3.375a1.125 1.125 0 0 1-1.125-1.125V14.25m17.25 4.5a1.5 1.5 0 0 1-3 0m3 0a1.5 1.5 0 0 0-3 0m3 0h1.125a1.125 1.125 0 0 0 1.125-1.125V9.75M3.75 4.5h9.75a1.125 1.125 0 0 1 1.125 1.125v9.75m-10.875 0H18m0 0h1.5A1.5 1.5 0 0 0 21 15.75v-2.25m-9-9h1.5a1.5 1.5 0 0 1 1.5 1.5v2.25m-3-3.75h3M6.75 12h.008v.008H6.75V12Zm0-3h.008v.008H6.75V9Zm3 3h.008v.008h-.008V12Zm0-3h.008v.008h-.008V9Z" />
+                    </svg>
+                </div>
+                <div>
+                    <p class="text-base font-semibold text-zinc-900">Free Shipping</p>
+                    <p class="text-sm text-zinc-500">Tamil Nadu / India</p>
+                </div>
+            </div>
+
+            <!-- Feature 4: Tested before dispatch -->
+            <div class="flex items-center gap-4 p-4 rounded-2xl bg-zinc-50 border border-zinc-100 hover:border-black/10 hover:shadow-sm transition-all duration-300 group shrink-0 w-[270px] md:w-auto md:shrink">
+                <div class="flex items-center justify-center w-12 h-12 rounded-xl bg-black/5 group-hover:bg-black group-hover:text-white text-black transition-all duration-300 shrink-0">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.8" stroke="currentColor" class="w-6 h-6">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75m-3-7.036A11.959 11.959 0 0 1 3.598 6 11.99 11.99 0 0 0 3 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.57-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285Z" />
+                    </svg>
+                </div>
+                <div>
+                    <p class="text-base font-semibold text-zinc-900">Tested Before Dispatch</p>
+                    <p class="text-sm text-zinc-500">100% Quality Checked</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <style>
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+
     <!-- Information Section -->
     <div class="1180:mt-20">
         <div class="max-1180:hidden">
