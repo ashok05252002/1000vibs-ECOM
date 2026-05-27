@@ -72,252 +72,132 @@
 
     <!-- Trust Badges -->
     <div class="container mt-12 px-[60px] max-1180:px-5">
-        <div class="flex gap-6 overflow-x-auto pb-4 no-scrollbar md:grid md:grid-cols-4 md:gap-6 md:pb-0">
+        <div class="grid grid-cols-4 gap-6 max-lg:grid-cols-2 max-sm:grid-cols-2 max-sm:gap-3">
             <!-- Feature 1: 7-day replacement -->
-            <div class="flex items-center gap-4 p-4 rounded-2xl bg-zinc-50 border border-zinc-100 hover:border-black/10 hover:shadow-md transition-all duration-300 group shrink-0 w-[270px] md:w-auto md:shrink">
-                <div class="flex items-center justify-center w-12 h-12 rounded-xl bg-black/5 group-hover:bg-black group-hover:text-white text-black transition-all duration-300 shrink-0">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.8" stroke="currentColor" class="w-6 h-6">
+            <div class="flex items-center gap-4 p-4 rounded-2xl bg-zinc-50 border border-zinc-100 hover:border-blue-200 hover:bg-blue-50/10 hover:shadow-sm transition-all duration-300 group max-sm:p-3 max-sm:rounded-xl max-sm:gap-2">
+                <div class="flex items-center justify-center w-12 h-12 rounded-xl bg-blue-50 text-blue-600 group-hover:bg-blue-600 group-hover:text-white transition-all duration-300 shrink-0 max-sm:w-10 max-sm:h-10">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-6 h-6 max-sm:w-5 max-sm:h-5 transition-transform duration-300 group-hover:rotate-12">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0 3.181 3.183a8.25 8.25 0 0 0 13.803-3.7M4.031 9.865a8.25 8.25 0 0 1 13.803-3.7l3.181 3.182m0-4.991v4.99" />
                     </svg>
                 </div>
                 <div>
-                    <p class="text-base font-semibold text-zinc-900">7-Day Replacement</p>
-                    <p class="text-sm text-zinc-500">Easy returns if damaged</p>
+                    <p class="text-base font-semibold text-zinc-900 max-sm:text-xs">7-Day Replacement</p>
+                    <p class="text-sm text-zinc-500 max-sm:text-[10px] leading-tight">Easy returns if damaged</p>
                 </div>
             </div>
 
             <!-- Feature 2: Cash on Delivery -->
-            <div class="flex items-center gap-4 p-4 rounded-2xl bg-zinc-50 border border-zinc-100 hover:border-black/10 hover:shadow-md transition-all duration-300 group shrink-0 w-[270px] md:w-auto md:shrink">
-                <div class="flex items-center justify-center w-12 h-12 rounded-xl bg-black/5 group-hover:bg-black group-hover:text-white text-black transition-all duration-300 shrink-0">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.8" stroke="currentColor" class="w-6 h-6">
+            <div class="flex items-center gap-4 p-4 rounded-2xl bg-zinc-50 border border-zinc-100 hover:border-emerald-200 hover:bg-emerald-50/10 hover:shadow-sm transition-all duration-300 group max-sm:p-3 max-sm:rounded-xl max-sm:gap-2">
+                <div class="flex items-center justify-center w-12 h-12 rounded-xl bg-emerald-50 text-emerald-600 group-hover:bg-emerald-600 group-hover:text-white transition-all duration-300 shrink-0 max-sm:w-10 max-sm:h-10">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-6 h-6 max-sm:w-5 max-sm:h-5 transition-transform duration-300 group-hover:scale-110">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 18.75a60.07 60.07 0 0 1 15.797 2.101c.727.198 1.453-.342 1.453-1.096V18.75M3.75 4.5h16.5M5.25 7.5h13.5m-15 3h16.5M5.25 13.5h13.5m-15 3h16.5m0 0v1.5a2.25 2.25 0 0 1-2.25 2.25H6.75a2.25 2.25 0 0 1-2.25-2.25V16.5m15 0V7.5" />
                     </svg>
                 </div>
                 <div>
-                    <p class="text-base font-semibold text-zinc-900">Cash on Delivery</p>
-                    <p class="text-sm text-zinc-500">Pay when you receive</p>
+                    <p class="text-base font-semibold text-zinc-900 max-sm:text-xs">Cash on Delivery</p>
+                    <p class="text-sm text-zinc-500 max-sm:text-[10px] leading-tight">Pay when you receive</p>
                 </div>
             </div>
 
             <!-- Feature 3: Free shipping Tamil Nadu / India -->
-            <div class="flex items-center gap-4 p-4 rounded-2xl bg-zinc-50 border border-zinc-100 hover:border-black/10 hover:shadow-md transition-all duration-300 group shrink-0 w-[270px] md:w-auto md:shrink">
-                <div class="flex items-center justify-center w-12 h-12 rounded-xl bg-black/5 group-hover:bg-black group-hover:text-white text-black transition-all duration-300 shrink-0">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.8" stroke="currentColor" class="w-6 h-6">
+            <div class="flex items-center gap-4 p-4 rounded-2xl bg-zinc-50 border border-zinc-100 hover:border-amber-200 hover:bg-amber-50/10 hover:shadow-sm transition-all duration-300 group max-sm:p-3 max-sm:rounded-xl max-sm:gap-2">
+                <div class="flex items-center justify-center w-12 h-12 rounded-xl bg-amber-50 text-amber-600 group-hover:bg-amber-600 group-hover:text-white transition-all duration-300 shrink-0 max-sm:w-10 max-sm:h-10">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-6 h-6 max-sm:w-5 max-sm:h-5 transition-transform duration-300 group-hover:translate-x-1">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 18.75a1.5 1.5 0 0 1-3 0m3 0a1.5 1.5 0 0 0-3 0m3 0h6m-9 0H3.375a1.125 1.125 0 0 1-1.125-1.125V14.25m17.25 4.5a1.5 1.5 0 0 1-3 0m3 0a1.5 1.5 0 0 0-3 0m3 0h1.125a1.125 1.125 0 0 0 1.125-1.125V9.75M3.75 4.5h9.75a1.125 1.125 0 0 1 1.125 1.125v9.75m-10.875 0H18m0 0h1.5A1.5 1.5 0 0 0 21 15.75v-2.25m-9-9h1.5a1.5 1.5 0 0 1 1.5 1.5v2.25m-3-3.75h3M6.75 12h.008v.008H6.75V12Zm0-3h.008v.008H6.75V9Zm3 3h.008v.008h-.008V12Zm0-3h.008v.008h-.008V9Z" />
                     </svg>
                 </div>
                 <div>
-                    <p class="text-base font-semibold text-zinc-900">Free Shipping</p>
-                    <p class="text-sm text-zinc-500">Tamil Nadu / India</p>
+                    <p class="text-base font-semibold text-zinc-900 max-sm:text-xs">Free Shipping</p>
+                    <p class="text-sm text-zinc-500 max-sm:text-[10px] leading-tight">Tamil Nadu / India</p>
                 </div>
             </div>
 
             <!-- Feature 4: Tested before dispatch -->
-            <div class="flex items-center gap-4 p-4 rounded-2xl bg-zinc-50 border border-zinc-100 hover:border-black/10 hover:shadow-sm transition-all duration-300 group shrink-0 w-[270px] md:w-auto md:shrink">
-                <div class="flex items-center justify-center w-12 h-12 rounded-xl bg-black/5 group-hover:bg-black group-hover:text-white text-black transition-all duration-300 shrink-0">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.8" stroke="currentColor" class="w-6 h-6">
+            <div class="flex items-center gap-4 p-4 rounded-2xl bg-zinc-50 border border-zinc-100 hover:border-indigo-200 hover:bg-indigo-50/10 hover:shadow-sm transition-all duration-300 group max-sm:p-3 max-sm:rounded-xl max-sm:gap-2">
+                <div class="flex items-center justify-center w-12 h-12 rounded-xl bg-indigo-50 text-indigo-600 group-hover:bg-indigo-600 group-hover:text-white transition-all duration-300 shrink-0 max-sm:w-10 max-sm:h-10">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-6 h-6 max-sm:w-5 max-sm:h-5 transition-transform duration-300 group-hover:scale-110">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75m-3-7.036A11.959 11.959 0 0 1 3.598 6 11.99 11.99 0 0 0 3 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.57-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285Z" />
                     </svg>
                 </div>
                 <div>
-                    <p class="text-base font-semibold text-zinc-900">Tested Before Dispatch</p>
-                    <p class="text-sm text-zinc-500">100% Quality Checked</p>
+                    <p class="text-base font-semibold text-zinc-900 max-sm:text-xs">Tested Before Dispatch</p>
+                    <p class="text-sm text-zinc-500 max-sm:text-[10px] leading-tight">100% Quality Checked</p>
                 </div>
             </div>
         </div>
     </div>
 
-    <style>
-        .no-scrollbar::-webkit-scrollbar {
-            display: none;
-        }
-        .no-scrollbar {
-            -ms-overflow-style: none;
-            scrollbar-width: none;
-        }
-    </style>
-
     <!-- Information Section -->
-    <div class="1180:mt-20">
-        <div class="max-1180:hidden">
-            <x-shop::tabs
-                position="center"
-                ref="productTabs"
-            >
-                <!-- Description Tab -->
-                {!! view_render_event('bagisto.shop.products.view.description.before', ['product' => $product]) !!}
+    <div class="container mt-16 px-[60px] max-1180:px-5">
+        <!-- Description Section -->
+        {!! view_render_event('bagisto.shop.products.view.description.before', ['product' => $product]) !!}
 
-                <x-shop::tabs.item
-                    id="descritpion-tab"
-                    class="container mt-[60px] !p-0"
-                    :title="trans('shop::app.products.view.description')"
-                    :is-selected="true"
-                >
-                    <div class="container mt-[60px] max-1180:px-5">
-                        <p class="text-lg text-zinc-500 max-1180:text-sm">
-                            {!! $product->description !!}
-                        </p>
-                    </div>
-                </x-shop::tabs.item>
-
-                {!! view_render_event('bagisto.shop.products.view.description.after', ['product' => $product]) !!}
-
-                <!-- Additional Information Tab -->
-                @if(count($attributeData))
-                    <x-shop::tabs.item
-                        id="information-tab"
-                        class="container mt-[60px] !p-0"
-                        :title="trans('shop::app.products.view.additional-information')"
-                        :is-selected="false"
-                    >
-                        <div class="container mt-[60px] max-1180:px-5">
-                            <div class="mt-8 grid max-w-max grid-cols-[auto_1fr] gap-4">
-                                @foreach ($customAttributeValues as $customAttributeValue)
-                                    @if (! empty($customAttributeValue['value']))
-                                        <div class="grid">
-                                            <p class="text-base text-black">
-                                                {!! $customAttributeValue['label'] !!}
-                                            </p>
-                                        </div>
-
-                                        @if ($customAttributeValue['type'] == 'file')
-                                            <a
-                                                href="{{ Storage::url($product[$customAttributeValue['code']]) }}"
-                                                download="{{ $customAttributeValue['label'] }}"
-                                            >
-                                                <span class="text-2xl icon-download"></span>
-                                            </a>
-                                        @elseif ($customAttributeValue['type'] == 'image')
-                                            <a
-                                                href="{{ Storage::url($product[$customAttributeValue['code']]) }}"
-                                                download="{{ $customAttributeValue['label'] }}"
-                                            >
-                                                <img
-                                                    class="w-5 h-5 min-h-5 min-w-5"
-                                                    src="{{ Storage::url($customAttributeValue['value']) }}"
-                                                />
-                                            </a>
-                                        @else
-                                            <div class="grid">
-                                                <p class="text-base text-zinc-500">
-                                                    {!! $customAttributeValue['value'] !!}
-                                                </p>
-                                            </div>
-                                        @endif
-                                    @endif
-                                @endforeach
-                            </div>
-                        </div>
-                    </x-shop::tabs.item>
-                @endif
-
-                <!-- Reviews Tab -->
-                <x-shop::tabs.item
-                    id="review-tab"
-                    class="container mt-[60px] !p-0"
-                    :title="trans('shop::app.products.view.review')"
-                    :is-selected="false"
-                >
-                    @include('shop::products.view.reviews')
-                </x-shop::tabs.item>
-            </x-shop::tabs>
+        <div class="mb-12">
+            <h2 class="text-2xl font-semibold text-zinc-900 mb-6 pb-2 border-b border-zinc-100">
+                @lang('shop::app.products.view.description')
+            </h2>
+            <div class="text-lg text-zinc-600 leading-relaxed space-y-4 max-sm:text-sm">
+                {!! $product->description !!}
+            </div>
         </div>
-    </div>
 
-    <!-- Information Section -->
-    <div class="container mt-6 grid gap-3 !p-0 max-1180:px-5 1180:hidden">
-        <!-- Description Accordion -->
-        <x-shop::accordion
-            class="max-md:border-none"
-            :is-active="true"
-        >
-            <x-slot:header class="bg-gray-100 max-md:!py-3 max-sm:!py-2">
-                <p class="text-base font-medium 1180:hidden">
-                    @lang('shop::app.products.view.description')
-                </p>
-            </x-slot>
+        {!! view_render_event('bagisto.shop.products.view.description.after', ['product' => $product]) !!}
 
-            <x-slot:content class="max-sm:px-0">
-                <div class="mb-5 text-lg text-zinc-500 max-1180:text-sm max-md:mb-1 max-md:px-4">
-                    {!! $product->description !!}
-                </div>
-            </x-slot>
-        </x-shop::accordion>
-
-        <!-- Additional Information Accordion -->
+        <!-- Additional Information Section -->
         @if (count($attributeData))
-            <x-shop::accordion
-                class="max-md:border-none"
-                :is-active="false"
-            >
-                <x-slot:header class="bg-gray-100 max-md:!py-3 max-sm:!py-2">
-                    <p class="text-base font-medium 1180:hidden">
-                        @lang('shop::app.products.view.additional-information')
-                    </p>
-                </x-slot>
+            <div class="mb-12">
+                <h2 class="text-2xl font-semibold text-zinc-900 mb-6 pb-2 border-b border-zinc-100">
+                    @lang('shop::app.products.view.additional-information')
+                </h2>
+                <div class="grid max-w-max grid-cols-[auto_1fr] gap-x-8 gap-y-4 text-base max-sm:text-sm">
+                    @foreach ($customAttributeValues as $customAttributeValue)
+                        @if (! empty($customAttributeValue['value']))
+                            <div class="text-zinc-500 font-medium">
+                                {!! $customAttributeValue['label'] !!}
+                            </div>
 
-                <x-slot:content class="max-sm:px-0">
-                    <div class="container max-1180:px-5">
-                        <div class="grid max-w-max grid-cols-[auto_1fr] gap-4 text-lg text-zinc-500 max-1180:text-sm">
-                            @foreach ($customAttributeValues as $customAttributeValue)
-                                @if (! empty($customAttributeValue['value']))
-                                    <div class="grid">
-                                        <p class="text-base text-black">
-                                            {{ $customAttributeValue['label'] }}
-                                        </p>
-                                    </div>
-
-                                    @if ($customAttributeValue['type'] == 'file')
-                                        <a
-                                            href="{{ Storage::url($product[$customAttributeValue['code']]) }}"
-                                            download="{{ $customAttributeValue['label'] }}"
-                                        >
-                                            <span class="text-2xl icon-download"></span>
-                                        </a>
-                                    @elseif ($customAttributeValue['type'] == 'image')
-                                        <a
-                                            href="{{ Storage::url($product[$customAttributeValue['code']]) }}"
-                                            download="{{ $customAttributeValue['label'] }}"
-                                        >
-                                            <img
-                                                class="w-5 h-5 min-h-5 min-w-5"
-                                                src="{{ Storage::url($customAttributeValue['value']) }}"
-                                                alt="Product Image"
-                                            />
-                                        </a>
-                                    @else
-                                        <div class="grid">
-                                            <p class="text-base text-zinc-500">
-                                                {{ $customAttributeValue['value'] ?? '-' }}
-                                            </p>
-                                        </div>
-                                    @endif
+                            <div>
+                                @if ($customAttributeValue['type'] == 'file')
+                                    <a
+                                        href="{{ Storage::url($product[$customAttributeValue['code']]) }}"
+                                        download="{{ $customAttributeValue['label'] }}"
+                                        class="text-black hover:underline inline-flex items-center gap-1"
+                                    >
+                                        <span class="text-2xl icon-download"></span>
+                                        Download File
+                                    </a>
+                                @elseif ($customAttributeValue['type'] == 'image')
+                                    <a
+                                        href="{{ Storage::url($product[$customAttributeValue['code']]) }}"
+                                        download="{{ $customAttributeValue['label'] }}"
+                                    >
+                                        <img
+                                            class="w-20 h-20 object-cover rounded-lg border border-zinc-200"
+                                            src="{{ Storage::url($customAttributeValue['value']) }}"
+                                            alt="{{ $customAttributeValue['label'] }}"
+                                        />
+                                    </a>
+                                @else
+                                    <span class="text-zinc-900">
+                                        {!! $customAttributeValue['value'] !!}
+                                    </span>
                                 @endif
-                            @endforeach
-                        </div>
-                    </div>
-                </x-slot>
-            </x-shop::accordion>
+                            </div>
+                        @endif
+                    @endforeach
+                </div>
+            </div>
         @endif
 
-        <!-- Reviews Accordion -->
-        <x-shop::accordion
-            class="max-md:border-none"
-            :is-active="false"
-        >
-            <x-slot:header
-                class="bg-gray-100 max-md:!py-3 max-sm:!py-2"
-                id="review-accordian-button"
-            >
-                <p class="text-base font-medium">
-                    @lang('shop::app.products.view.review')
-                </p>
-            </x-slot>
-
-            <x-slot:content>
+        <!-- Reviews Section -->
+        <div class="mb-12">
+            <h2 class="text-2xl font-semibold text-zinc-900 mb-6 pb-2 border-b border-zinc-100" id="review-section-title">
+                @lang('shop::app.products.view.review')
+            </h2>
+            <div class="mt-4">
                 @include('shop::products.view.reviews')
-            </x-slot>
-        </x-shop::accordion>
+            </div>
+        </div>
     </div>
 
     <v-product-associations />
@@ -706,22 +586,10 @@
                     },
 
                     scrollToReview() {
-                        let accordianElement = document.querySelector('#review-accordian-button');
+                        let reviewTitle = document.querySelector('#review-section-title');
 
-                        if (accordianElement) {
-                            accordianElement.click();
-
-                            accordianElement.scrollIntoView({
-                                behavior: 'smooth'
-                            });
-                        }
-
-                        let tabElement = document.querySelector('#review-tab-button');
-
-                        if (tabElement) {
-                            tabElement.click();
-
-                            tabElement.scrollIntoView({
+                        if (reviewTitle) {
+                            reviewTitle.scrollIntoView({
                                 behavior: 'smooth'
                             });
                         }
