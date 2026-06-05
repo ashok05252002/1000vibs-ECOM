@@ -49,7 +49,11 @@ class ProductsCategoriesProxyController extends Controller
                 'channel_id' => core()->getCurrentChannel()->id,
             ]);
 
-            return view('shop::home.index', compact('customizations'));
+            $categories = $this->categoryRepository->getVisibleCategoryTree(core()->getCurrentChannel()->root_category_id);
+
+            $categories = \Webkul\Shop\Http\Resources\CategoryTreeResource::collection($categories);
+
+            return view('shop::home.index', compact('customizations', 'categories'));
         }
 
         $category = $this->categoryRepository->findBySlug($slugOrURLKey);

@@ -138,6 +138,18 @@ class CartRule
                 $coupon
                 && $coupon->code === $this->cart->coupon_code
             ) {
+                if (strcasecmp($coupon->code, 'WELCOME1000VIBES') === 0) {
+                    $startTime = request()->cookie('welcome_promo_start_time') ?? $_COOKIE['welcome_promo_start_time'] ?? null;
+                    if (! $startTime) {
+                        return false;
+                    }
+
+                    $elapsed = time() - (int) $startTime;
+                    if ($elapsed > 3600 || $elapsed < -300) {
+                        return false;
+                    }
+                }
+
                 if (
                     $coupon->usage_limit
                     && $coupon->times_used >= $coupon->usage_limit

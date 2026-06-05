@@ -228,6 +228,24 @@ class CartController extends APIController
                         ]))->response()->setStatusCode(Response::HTTP_UNPROCESSABLE_ENTITY);
                     }
 
+                    if (strcasecmp($coupon->code, 'WELCOME1000VIBES') === 0) {
+                        $startTime = request()->cookie('welcome_promo_start_time') ?? $_COOKIE['welcome_promo_start_time'] ?? null;
+                        if (! $startTime) {
+                            return (new JsonResource([
+                                'data'     => new CartResource(Cart::getCart()),
+                                'message'  => trans('This welcome coupon is only valid for 1 hour from your first visit.'),
+                            ]))->response()->setStatusCode(Response::HTTP_UNPROCESSABLE_ENTITY);
+                        }
+
+                        $elapsed = time() - (int) $startTime;
+                        if ($elapsed > 3600 || $elapsed < -300) {
+                            return (new JsonResource([
+                                'data'     => new CartResource(Cart::getCart()),
+                                'message'  => trans('This welcome coupon has expired.'),
+                            ]))->response()->setStatusCode(Response::HTTP_UNPROCESSABLE_ENTITY);
+                        }
+                    }
+
                     Cart::setCouponCode($coupon->code)->collectTotals();
 
                     if (Cart::getCart()->coupon_code == $coupon->code) {
