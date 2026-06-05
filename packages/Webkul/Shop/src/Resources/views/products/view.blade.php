@@ -72,7 +72,7 @@
 
     <!-- Trust Badges -->
     <div class="container mt-12 px-[60px] max-1180:px-5">
-        <div class="grid grid-cols-4 gap-6 max-lg:grid-cols-2 max-sm:grid-cols-2 max-sm:gap-3">
+        <div class="grid grid-cols-4 gap-6 max-lg:grid-cols-2 max-sm:grid-cols-1 max-sm:gap-3">
             <!-- Feature 1: 7-day replacement -->
             <div class="flex items-center gap-4 p-4 rounded-2xl bg-zinc-50 border border-zinc-100 hover:border-blue-200 hover:bg-blue-50/10 hover:shadow-sm transition-all duration-300 group max-sm:p-3 max-sm:rounded-xl max-sm:gap-2">
                 <div class="flex items-center justify-center w-12 h-12 rounded-xl bg-blue-50 text-blue-600 group-hover:bg-blue-600 group-hover:text-white transition-all duration-300 shrink-0 max-sm:w-10 max-sm:h-10">
