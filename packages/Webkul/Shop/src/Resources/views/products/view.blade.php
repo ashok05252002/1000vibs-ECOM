@@ -99,7 +99,7 @@
                 </div>
             </div>
 
-            <!-- Feature 3: Free shipping All over India -->
+            <!-- Feature 3: Free shipping Tamil Nadu / India -->
             <div class="flex items-center gap-4 p-4 rounded-2xl bg-zinc-50 border border-zinc-100 hover:border-amber-200 hover:bg-amber-50/10 hover:shadow-sm transition-all duration-300 group max-sm:p-3 max-sm:rounded-xl max-sm:gap-2">
                 <div class="flex items-center justify-center w-12 h-12 rounded-xl bg-amber-50 text-amber-600 group-hover:bg-amber-600 group-hover:text-white transition-all duration-300 shrink-0 max-sm:w-10 max-sm:h-10">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-6 h-6 max-sm:w-5 max-sm:h-5 transition-transform duration-300 group-hover:translate-x-1">
@@ -108,7 +108,7 @@
                 </div>
                 <div>
                     <p class="text-base font-semibold text-zinc-900 max-sm:text-xs">Free Shipping</p>
-                    <p class="text-sm text-zinc-500 max-sm:text-[10px] leading-tight">All over India</p>
+                    <p class="text-sm text-zinc-500 max-sm:text-[10px] leading-tight">Tamil Nadu / India</p>
                 </div>
             </div>
 

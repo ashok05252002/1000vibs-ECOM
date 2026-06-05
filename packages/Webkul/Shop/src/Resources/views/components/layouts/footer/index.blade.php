@@ -82,23 +82,21 @@
 
         {!! view_render_event('bagisto.shop.layout.footer.newsletter_subscription.before') !!}
 
-        <!-- Footer Logo & News Letter subscription -->
-        <div class="grid gap-4">
-            <a
-                href="{{ route('shop.home.index') }}"
-                class="max-h-[30px]"
-                aria-label="{{ config('app.name') }}"
-            >
-                <img
-                    src="{{ core()->getCurrentChannel()->logo_url ?? bagisto_asset('images/logo.svg') }}"
-                    alt="{{ config('app.name') }}"
-                    width="131"
-                    height="29"
+        <!-- News Letter subscription -->
+        @if (core()->getConfigData('customer.settings.newsletter.subscription'))
+            <div class="grid gap-2.5">
+                <p
+                    class="max-w-[288px] text-3xl italic leading-[45px] text-navyBlue max-md:text-2xl max-sm:text-lg"
+                    role="heading"
+                    aria-level="2"
                 >
-            </a>
+                    @lang('shop::app.components.layouts.footer.newsletter-text')
+                </p>
 
-            {{--
-            @if (core()->getConfigData('customer.settings.newsletter.subscription'))
+                <p class="text-xs">
+                    @lang('shop::app.components.layouts.footer.subscribe-stay-touch')
+                </p>
+
                 <div>
                     <x-shop::form
                         :action="route('shop.subscription.store')"
@@ -126,9 +124,8 @@
                         </div>
                     </x-shop::form>
                 </div>
-            @endif
-            --}}
-        </div>
+            </div>
+        @endif
 
         {!! view_render_event('bagisto.shop.layout.footer.newsletter_subscription.after') !!}
     </div>

@@ -14,6 +14,5 @@ class EncryptCookies extends Middleware
     protected $except = [
         'sidebar_collapsed',
         'dark_mode',
-        'welcome_promo_start_time',
     ];
 }
