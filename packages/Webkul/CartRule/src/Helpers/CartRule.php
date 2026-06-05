@@ -145,7 +145,7 @@ class CartRule
                     }
 
                     $elapsed = time() - (int) $startTime;
-                    if ($elapsed > 3600 || $elapsed < -300) {
+                    if ($elapsed > 900 || $elapsed < -300) {
                         return false;
                     }
                 }

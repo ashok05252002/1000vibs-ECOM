@@ -213,7 +213,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                     </div>
                     <div style="background: #faf5ff; border: 1px solid #f3e8ff; border-radius: 12px; padding: 15px; display: flex; align-items: center; justify-content: center; gap: 10px; margin-bottom: 25px;">
                         <span style="font-size: 14px; font-weight: 600; color: #6b21a8;">Offer Expires In:</span>
-                        <span id="welcome-modal-timer" style="font-size: 20px; font-weight: 700; color: #7c3aed; font-family: monospace;">60:00</span>
+                        <span id="welcome-modal-timer" style="font-size: 20px; font-weight: 700; color: #7c3aed; font-family: monospace;">15:00</span>
                     </div>
                     <button onclick="dismissPromoModal()" style="width: 100%; background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%); color: #ffffff; border: none; padding: 12px; border-radius: 8px; font-weight: 600; font-size: 15px; cursor: pointer; box-shadow: 0 4px 6px rgba(99, 102, 241, 0.2); transition: transform 0.2s, opacity 0.2s;" onmouseover="this.style.transform='translateY(-1px)'" onmouseout="this.style.transform='none'">Shop Now</button>
                 </div>
@@ -318,7 +318,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 function updateTimer() {
                     const nowSeconds = Math.floor(Date.now() / 1000);
                     const elapsed = nowSeconds - startTimestamp;
-                    const remainingSeconds = 3600 - elapsed;
+                    const remainingSeconds = 900 - elapsed;
 
                     if (remainingSeconds <= 0 || elapsed < -300) {
                         modal.style.display = 'none';
@@ -369,7 +369,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                     }
 
                     if (currentElapsed >= trigger.threshold) {
-                        if (currentElapsed < 3600) {
+                        if (currentElapsed < 900) {
                             modal.style.display = 'flex';
                             fired.push(trigger.key);
                             localStorage.setItem('welcome_promo_fired_triggers', JSON.stringify(fired));

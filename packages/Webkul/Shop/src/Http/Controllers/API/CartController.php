@@ -233,12 +233,12 @@ class CartController extends APIController
                         if (! $startTime) {
                             return (new JsonResource([
                                 'data'     => new CartResource(Cart::getCart()),
-                                'message'  => trans('This welcome coupon is only valid for 1 hour from your first visit.'),
+                                'message'  => trans('This welcome coupon is only valid for 15 minutes from your first visit.'),
                             ]))->response()->setStatusCode(Response::HTTP_UNPROCESSABLE_ENTITY);
                         }
 
                         $elapsed = time() - (int) $startTime;
-                        if ($elapsed > 3600 || $elapsed < -300) {
+                        if ($elapsed > 900 || $elapsed < -300) {
                             return (new JsonResource([
                                 'data'     => new CartResource(Cart::getCart()),
                                 'message'  => trans('This welcome coupon has expired.'),
