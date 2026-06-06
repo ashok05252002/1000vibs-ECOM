@@ -33,6 +33,7 @@
     </x-slot>
 
     <!-- Loop over the theme customization -->
+    @php $reelsRendered = false; @endphp
     @foreach ($customizations as $customization)
         @php ($data = $customization->options) @endphp
 
@@ -83,5 +84,16 @@
 
                 @break
         @endswitch
+
+        @if ($loop->iteration == 5)
+            <!-- Video Reels (6th Section) -->
+            @include('shop::home.reels')
+            @php $reelsRendered = true; @endphp
+        @endif
     @endforeach
+
+    @if (! $reelsRendered)
+        <!-- Video Reels (6th Section Fallback) -->
+        @include('shop::home.reels')
+    @endif
 </x-shop::layouts>
