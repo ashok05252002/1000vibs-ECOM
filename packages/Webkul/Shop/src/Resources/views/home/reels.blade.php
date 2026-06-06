@@ -3,7 +3,7 @@
         Our Customer Reviews
     </h2>
     
-    <div class="flex gap-6 overflow-x-auto pb-4 no-scrollbar scroll-smooth snap-x snap-mandatory md:grid md:grid-cols-3 md:gap-6 md:pb-0">
+    <div class="flex gap-6 overflow-x-auto pb-4 no-scrollbar scroll-smooth snap-x snap-mandatory md:flex md:justify-center md:gap-8 md:pb-0">
         @php
             $reels = [
                 ['id' => 1, 'src' => 'https://mmiveoaqcneebkmxushx.supabase.co/storage/v1/object/public/uploads/FEEDBACK%20(1).mp4'],
@@ -20,6 +20,7 @@
                     class="w-full h-full object-cover"
                     loop
                     muted
+                    autoplay
                     playsinline
                     webkit-playsinline
                     preload="metadata"
@@ -79,21 +80,30 @@
 
 <style>
     .review-video-card {
-        height: 500px;
-        width: 100%;
-        min-width: 280px;
+        height: 300px;
+        width: 168px;
+        flex-shrink: 0;
     }
     @media (max-width: 768px) {
         .review-video-card {
             height: 440px;
-            min-width: 240px;
+            width: 250px;
         }
     }
     @media (max-width: 480px) {
         .review-video-card {
-            height: 380px;
-            min-width: 210px;
+            height: 480px;
+            width: calc(100vw - 32px);
         }
+    }
+    /* Maintain original aspect ratio inside fullscreen mode */
+    video:fullscreen {
+        object-fit: contain !important;
+        background-color: #000000;
+    }
+    video:-webkit-full-screen {
+        object-fit: contain !important;
+        background-color: #000000;
     }
     .no-scrollbar::-webkit-scrollbar {
         display: none;
@@ -107,38 +117,36 @@
 <script>
     function togglePlay(id) {
         const video = document.getElementById('reel-video-' + id);
-        const playBtn = document.getElementById('play-btn-' + id);
-        const playIcon = document.getElementById('play-icon-' + id);
-        const pauseIcon = document.getElementById('pause-icon-' + id);
+        
+        // Mute all other videos first to prevent multiple audio tracks playing
+        document.querySelectorAll('video[id^="reel-video-"]').forEach(v => {
+            if (v.id !== 'reel-video-' + id) {
+                v.muted = true;
+                const otherId = v.id.replace('reel-video-', '');
+                const otherMuteIcon = document.getElementById('mute-icon-' + otherId);
+                const otherSpeakerIcon = document.getElementById('speaker-icon-' + otherId);
+                if (otherMuteIcon) otherMuteIcon.classList.remove('hidden');
+                if (otherSpeakerIcon) otherSpeakerIcon.classList.add('hidden');
+            }
+        });
 
-        if (video.paused) {
-            // Pause all other videos first to have single-focus playback
-            document.querySelectorAll('video[id^="reel-video-"]').forEach(v => {
-                if (v.id !== 'reel-video-' + id) {
-                    v.pause();
-                    const otherId = v.id.replace('reel-video-', '');
-                    document.getElementById('play-icon-' + otherId).classList.remove('hidden');
-                    document.getElementById('pause-icon-' + otherId).classList.add('hidden');
-                    document.getElementById('play-btn-' + otherId).style.opacity = '1';
-                }
-            });
-
-            video.play();
-            playIcon.classList.add('hidden');
-            pauseIcon.classList.remove('hidden');
-            
-            // Fade out play indicator after starting play
-            setTimeout(() => {
-                if (!video.paused) {
-                    playBtn.style.opacity = '0';
-                }
-            }, 500);
-        } else {
-            video.pause();
-            playIcon.classList.remove('hidden');
-            pauseIcon.classList.add('hidden');
-            playBtn.style.opacity = '1';
+        // Enter fullscreen for full view on click
+        if (video.requestFullscreen) {
+            video.requestFullscreen();
+        } else if (video.webkitRequestFullscreen) {
+            video.webkitRequestFullscreen();
+        } else if (video.msRequestFullscreen) {
+            video.msRequestFullscreen();
         }
+
+        // Unmute when going fullscreen so sound plays
+        video.muted = false;
+        const muteIcon = document.getElementById('mute-icon-' + id);
+        const speakerIcon = document.getElementById('speaker-icon-' + id);
+        if (muteIcon) muteIcon.classList.add('hidden');
+        if (speakerIcon) speakerIcon.classList.remove('hidden');
+
+        video.play();
     }
 
     function toggleMute(event, id) {
@@ -149,6 +157,18 @@
         const speakerIcon = document.getElementById('speaker-icon-' + id);
 
         if (video.muted) {
+            // Mute all other videos first so only one video is unmuted at a time
+            document.querySelectorAll('video[id^="reel-video-"]').forEach(v => {
+                if (v.id !== 'reel-video-' + id) {
+                    v.muted = true;
+                    const otherId = v.id.replace('reel-video-', '');
+                    const otherMuteIcon = document.getElementById('mute-icon-' + otherId);
+                    const otherSpeakerIcon = document.getElementById('speaker-icon-' + otherId);
+                    if (otherMuteIcon) otherMuteIcon.classList.remove('hidden');
+                    if (otherSpeakerIcon) otherSpeakerIcon.classList.add('hidden');
+                }
+            });
+
             video.muted = false;
             muteIcon.classList.add('hidden');
             speakerIcon.classList.remove('hidden');
@@ -158,4 +178,24 @@
             speakerIcon.classList.add('hidden');
         }
     }
+
+    // Global listener to detect when user exits fullscreen and mute the video again
+    const handleFullscreenChange = () => {
+        const fullscreenElement = document.fullscreenElement || document.webkitFullscreenElement || document.mozFullScreenElement || document.msFullscreenElement;
+        if (!fullscreenElement) {
+            document.querySelectorAll('video[id^="reel-video-"]').forEach(v => {
+                v.muted = true;
+                const id = v.id.replace('reel-video-', '');
+                const muteIcon = document.getElementById('mute-icon-' + id);
+                const speakerIcon = document.getElementById('speaker-icon-' + id);
+                if (muteIcon) muteIcon.classList.remove('hidden');
+                if (speakerIcon) speakerIcon.classList.add('hidden');
+            });
+        }
+    };
+
+    document.addEventListener('fullscreenchange', handleFullscreenChange);
+    document.addEventListener('webkitfullscreenchange', handleFullscreenChange);
+    document.addEventListener('mozfullscreenchange', handleFullscreenChange);
+    document.addEventListener('MSFullscreenChange', handleFullscreenChange);
 </script>
