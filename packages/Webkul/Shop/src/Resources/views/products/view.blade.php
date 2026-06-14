@@ -200,6 +200,9 @@
         </div>
     </div>
 
+    <!-- Video Reels Section -->
+    @include('shop::home.reels')
+
     <v-product-associations />
 
     {!! view_render_event('bagisto.shop.products.view.after', ['product' => $product]) !!}
