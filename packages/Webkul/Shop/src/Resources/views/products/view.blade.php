@@ -203,6 +203,9 @@
     <!-- Video Reels Section -->
     @include('shop::home.reels')
 
+    <!-- Customer Testimonials Section -->
+    @include('shop::products.view.testimonials')
+
     <v-product-associations />
 
     {!! view_render_event('bagisto.shop.products.view.after', ['product' => $product]) !!}
