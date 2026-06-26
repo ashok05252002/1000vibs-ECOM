@@ -63,10 +63,9 @@
                                 class="max-h-full max-w-full transition-transform duration-300 ease-out"
                                 controls 
                                 v-if="attachment.type == 'video'"
+                                :src="attachment.url"
                             >
-                                <source :src="attachment.url" type="video/mp4">
-                                <source :src="attachment.url" type="video/ogg">
-                                    Your browser does not support HTML video.
+                                Your browser does not support HTML video.
                             </video>
 
                             <template v-if="attachment.type === 'image'">

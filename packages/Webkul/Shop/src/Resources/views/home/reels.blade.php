@@ -6,9 +6,9 @@
     <div class="flex gap-6 overflow-x-auto pb-4 no-scrollbar scroll-smooth snap-x snap-mandatory md:flex md:justify-center md:gap-8 md:pb-0">
         @php
             $reels = [
-                ['id' => 1, 'src' => 'https://mmiveoaqcneebkmxushx.supabase.co/storage/v1/object/public/uploads/FEEDBACK%20(1).mp4'],
-                ['id' => 2, 'src' => 'https://mmiveoaqcneebkmxushx.supabase.co/storage/v1/object/public/uploads/IMG_0263%20(1).mp4'],
-                ['id' => 3, 'src' => 'https://mmiveoaqcneebkmxushx.supabase.co/storage/v1/object/public/uploads/IMG_0710%20(1).mp4'],
+                ['id' => 1, 'src' => asset('videos/FEEDBACK.mp4')],
+                ['id' => 2, 'src' => asset('videos/IMG_0263 (1).mp4')],
+                ['id' => 3, 'src' => asset('videos/IMG_0710 (1) (1).mp4')],
             ];
         @endphp
 
@@ -117,36 +117,54 @@
 <script>
     function togglePlay(id) {
         const video = document.getElementById('reel-video-' + id);
+        const playIcon = document.getElementById('play-icon-' + id);
+        const pauseIcon = document.getElementById('pause-icon-' + id);
         
-        // Mute all other videos first to prevent multiple audio tracks playing
-        document.querySelectorAll('video[id^="reel-video-"]').forEach(v => {
-            if (v.id !== 'reel-video-' + id) {
-                v.muted = true;
-                const otherId = v.id.replace('reel-video-', '');
-                const otherMuteIcon = document.getElementById('mute-icon-' + otherId);
-                const otherSpeakerIcon = document.getElementById('speaker-icon-' + otherId);
-                if (otherMuteIcon) otherMuteIcon.classList.remove('hidden');
-                if (otherSpeakerIcon) otherSpeakerIcon.classList.add('hidden');
+        if (video.paused) {
+            // Mute all other videos first to prevent multiple audio tracks playing
+            document.querySelectorAll('video[id^="reel-video-"]').forEach(v => {
+                if (v.id !== 'reel-video-' + id) {
+                    v.muted = true;
+                    v.pause();
+                    const otherId = v.id.replace('reel-video-', '');
+                    const otherMuteIcon = document.getElementById('mute-icon-' + otherId);
+                    const otherSpeakerIcon = document.getElementById('speaker-icon-' + otherId);
+                    const otherPlayIcon = document.getElementById('play-icon-' + otherId);
+                    const otherPauseIcon = document.getElementById('pause-icon-' + otherId);
+                    
+                    if (otherMuteIcon) otherMuteIcon.classList.remove('hidden');
+                    if (otherSpeakerIcon) otherSpeakerIcon.classList.add('hidden');
+                    if (otherPlayIcon) otherPlayIcon.classList.remove('hidden');
+                    if (otherPauseIcon) otherPauseIcon.classList.add('hidden');
+                }
+            });
+
+            // Enter fullscreen for full view on click
+            if (video.requestFullscreen) {
+                video.requestFullscreen();
+            } else if (video.webkitRequestFullscreen) {
+                video.webkitRequestFullscreen();
+            } else if (video.webkitEnterFullscreen) {
+                video.webkitEnterFullscreen();
+            } else if (video.msRequestFullscreen) {
+                video.msRequestFullscreen();
             }
-        });
 
-        // Enter fullscreen for full view on click
-        if (video.requestFullscreen) {
-            video.requestFullscreen();
-        } else if (video.webkitRequestFullscreen) {
-            video.webkitRequestFullscreen();
-        } else if (video.msRequestFullscreen) {
-            video.msRequestFullscreen();
+            // Unmute when going fullscreen so sound plays
+            video.muted = false;
+            const muteIcon = document.getElementById('mute-icon-' + id);
+            const speakerIcon = document.getElementById('speaker-icon-' + id);
+            if (muteIcon) muteIcon.classList.add('hidden');
+            if (speakerIcon) speakerIcon.classList.remove('hidden');
+
+            video.play();
+            if (playIcon) playIcon.classList.add('hidden');
+            if (pauseIcon) pauseIcon.classList.remove('hidden');
+        } else {
+            video.pause();
+            if (playIcon) playIcon.classList.remove('hidden');
+            if (pauseIcon) pauseIcon.classList.add('hidden');
         }
-
-        // Unmute when going fullscreen so sound plays
-        video.muted = false;
-        const muteIcon = document.getElementById('mute-icon-' + id);
-        const speakerIcon = document.getElementById('speaker-icon-' + id);
-        if (muteIcon) muteIcon.classList.add('hidden');
-        if (speakerIcon) speakerIcon.classList.remove('hidden');
-
-        video.play();
     }
 
     function toggleMute(event, id) {
@@ -198,4 +216,23 @@
     document.addEventListener('webkitfullscreenchange', handleFullscreenChange);
     document.addEventListener('mozfullscreenchange', handleFullscreenChange);
     document.addEventListener('MSFullscreenChange', handleFullscreenChange);
+
+    // Ensure icon states correctly reflect autoplay status
+    document.addEventListener('DOMContentLoaded', () => {
+        document.querySelectorAll('video[id^="reel-video-"]').forEach(video => {
+            const id = video.id.replace('reel-video-', '');
+            const playIcon = document.getElementById('play-icon-' + id);
+            const pauseIcon = document.getElementById('pause-icon-' + id);
+
+            video.addEventListener('play', () => {
+                if (playIcon) playIcon.classList.add('hidden');
+                if (pauseIcon) pauseIcon.classList.remove('hidden');
+            });
+
+            video.addEventListener('pause', () => {
+                if (playIcon) playIcon.classList.remove('hidden');
+                if (pauseIcon) pauseIcon.classList.add('hidden');
+            });
+        });
+    });
 </script>
