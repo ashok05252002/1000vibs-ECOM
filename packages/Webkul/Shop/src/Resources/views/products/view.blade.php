@@ -200,8 +200,6 @@
         </div>
     </div>
 
-    <!-- Video Reels Section -->
-    @include('shop::home.reels')
 
     <!-- Customer Testimonials Section -->
     @include('shop::products.view.testimonials')
