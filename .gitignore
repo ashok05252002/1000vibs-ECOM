@@ -1,32 +1,65 @@
+# Environment
 .env
 .env.testing
-.idea
+
+# IDEs
+.idea/
+.vscode/
+.vagrant/
+
+# PHP
 .php_cs.cache
 .phpunit.result.cache
-.vscode
-.vagrant
-*.hot
-/stubs
-/data
-/docker-compose-collection
-Homestead.json
-Homestead.yaml
-/ignorables/*
-/node_modules
+
+# Node
+/node_modules/
 npm-debug.log
 package-lock.json
-/playwright-report
-/public/css
-/public/js
-/public/hot
-/public/storage
-/public/vendor
-/lang/vendor
-/storage/*.key
-/storage/dcc-data/
-/test-results
-/vendor
 yarn.lock
 yarn-error.log
-/test-results
-/playwright-report
+
+# Vite / Hot Reload
+*.hot*
+/public/hot
+
+# Playwright
+/playwright-report/
+/test-results/
+
+# Laravel Vendor
+/vendor/
+
+# Laravel Storage
+/storage/*.key
+/storage/logs/*
+/storage/framework/cache/*
+/storage/framework/sessions/*
+/storage/framework/views/*
+/storage/framework/testing/*
+/storage/dcc-data/
+
+# Uploaded Files (Bagisto)
+# These will remain on the server and be backed up separately.
+# Do NOT store product/category/customer images in Git.
+/storage/app/public/*
+!/storage/app/public/.gitignore
+
+# Bootstrap Cache
+/bootstrap/cache/*.php
+
+# Public Generated Files
+/public/css/
+/public/js/
+/public/storage
+/public/vendor
+/public/build/
+# Language Vendor Files
+/lang/vendor/
+
+# Misc
+*/stubs*
+*/data*
+*/docker-compose-collection*
+*/ignorables/*
+*Homestead.json*
+*Homestead.yaml*
