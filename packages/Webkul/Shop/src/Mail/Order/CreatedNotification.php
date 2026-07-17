@@ -29,6 +29,9 @@ class CreatedNotification extends Mailable
                     $this->order->customer_full_name
                 ),
             ],
+            bcc: [
+                new Address('1000vibes.nagercoil@gmail.com', '1000vibes Admin'),
+            ],
             subject: trans('shop::app.emails.orders.created.subject'),
         );
     }
