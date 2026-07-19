@@ -1,19 +1,15 @@
 @component('admin::emails.layout')
     <div style="margin-bottom: 34px;">
         <span style="font-size: 22px;font-weight: 600;color: #121A26">
-            @lang('admin::app.emails.orders.created.title')
+            New Order Received!
         </span> <br>
 
         <p style="font-size: 16px;color: #5E5E5E;line-height: 24px;">
-            @lang('admin::app.emails.dear', ['admin_name' => core()->getAdminEmailDetails()['name']]),👋
+            Hello 1000 Vibes,👋
         </p>
 
         <p style="font-size: 16px;color: #5E5E5E;line-height: 24px;">
-            {!! __('admin::app.emails.orders.created.greeting', [
-                'order_id' => '<a href="' . route('admin.sales.orders.view', $order->id) . '" style="color: #2969FF;">#' . $order->increment_id . '</a>',
-                'created_at' => core()->formatDate($order->created_at, 'Y-m-d H:i:s')
-                ])
-            !!}
+            You have received a new order (<a href="{{ route('admin.sales.orders.view', $order->id) }}" style="color: #2969FF;">#{{ $order->increment_id }}</a>) from <strong>{{ $order->customer_full_name ?? $order->customer_first_name . ' ' . $order->customer_last_name }}</strong>. Here are the details for this order:
         </p>
     </div>
 

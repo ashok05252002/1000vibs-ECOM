@@ -45,6 +45,10 @@
 					@lang('shop::app.checkout.success.info')
 				@endif
 			</p>
+			
+			<p class="text-lg text-red-600 max-md:text-center max-md:text-xs mt-2 font-semibold">
+				You will receive an order confirmation email shortly. Please also check your spam or junk folder if you do not see it in your inbox!
+			</p>
 
 			{{ view_render_event('bagisto.shop.checkout.success.continue-shopping.before', ['order' => $order]) }}
 
