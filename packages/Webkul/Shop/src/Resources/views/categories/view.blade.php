@@ -53,11 +53,33 @@
     {!! view_render_event('bagisto.shop.categories.view.description.after') !!}
 
     @if (in_array($category->display_mode, [null, 'products_only', 'products_and_description']))
-        <!-- Category Vue Component -->
-        <v-category>
-            <!-- Category Shimmer Effect -->
-            <x-shop::shimmer.categories.view />
-        </v-category>
+        @php
+            $subCategories = $category->children()->where('status', 1)->get();
+        @endphp
+
+        @if ($subCategories->count())
+            <div class="container mt-8 mb-16 px-[60px] max-lg:px-8 max-md:mt-4 max-md:px-4">
+                <h2 class="text-2xl font-semibold text-gray-900 mb-6">@lang('Subcategories')</h2>
+                <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8">
+                    @foreach ($subCategories as $subCategory)
+                        <a href="{{ $subCategory->url }}" class="flex flex-col items-center justify-center p-6 bg-white rounded-2xl border border-gray-200 hover:border-navyBlue hover:shadow-lg transition-all duration-300">
+                            @if ($subCategory->logo_url)
+                                <img src="{{ $subCategory->logo_url }}" alt="{{ $subCategory->name }}" class="h-[130px] w-[130px] object-cover rounded-full mb-4 shadow-sm" />
+                            @else
+                                <img src="{{ bagisto_asset('images/small-product-placeholder.webp') }}" alt="{{ $subCategory->name }}" class="h-[130px] w-[130px] object-cover rounded-full mb-4 shadow-sm" />
+                            @endif
+                            <p class="text-lg text-black font-medium text-center mt-2">{{ $subCategory->name }}</p>
+                        </a>
+                    @endforeach
+                </div>
+            </div>
+        @else
+            <!-- Category Vue Component -->
+            <v-category>
+                <!-- Category Shimmer Effect -->
+                <x-shop::shimmer.categories.view />
+            </v-category>
+        @endif
     @endif
 
     @pushOnce('scripts')
