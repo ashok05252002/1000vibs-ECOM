@@ -20,6 +20,10 @@ class EventServiceProvider extends ServiceProvider
             'Webkul\FPC\Listeners\Product@beforeDelete',
         ],
 
+        'catalog.category.create.after' => [
+            'Webkul\FPC\Listeners\Category@afterCreate',
+        ],
+
         'catalog.category.update.after' => [
             'Webkul\FPC\Listeners\Category@afterUpdate',
         ],

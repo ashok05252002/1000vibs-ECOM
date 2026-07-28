@@ -15,6 +15,17 @@ class Category
     public function __construct(protected CategoryRepository $categoryRepository) {}
 
     /**
+     * After category create
+     *
+     * @param  \Webkul\Category\Contracts\Category  $category
+     * @return void
+     */
+    public function afterCreate($category)
+    {
+        ResponseCache::clear();
+    }
+
+    /**
      * After category update
      *
      * @param  \Webkul\Category\Contracts\Category  $category
@@ -22,13 +33,7 @@ class Category
      */
     public function afterUpdate($category)
     {
-        foreach (core()->getAllLocales() as $locale) {
-            if ($categoryTranslation = $category->translate($locale->code)) {
-                ResponseCache::forget($categoryTranslation->slug);
-            }
-
-            ResponseCache::forget($category->translate(core()->getDefaultLocaleCodeFromDefaultChannel())->slug);
-        }
+        ResponseCache::clear();
     }
 
     /**
@@ -39,14 +44,6 @@ class Category
      */
     public function beforeDelete($categoryId)
     {
-        $category = $this->categoryRepository->find($categoryId);
-
-        foreach (core()->getAllLocales() as $locale) {
-            if ($categoryTranslation = $category->translate($locale->code)) {
-                ResponseCache::forget($categoryTranslation->slug);
-            }
-
-            ResponseCache::forget($category->translate(core()->getDefaultLocaleCodeFromDefaultChannel())->slug);
-        }
+        ResponseCache::clear();
     }
 }

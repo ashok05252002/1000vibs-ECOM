@@ -58,17 +58,17 @@
         @endphp
 
         @if ($subCategories->count())
-            <div class="container mt-8 mb-16 px-[60px] max-lg:px-8 max-md:mt-4 max-md:px-4">
-                <h2 class="text-2xl font-semibold text-gray-900 mb-6">@lang('Subcategories')</h2>
-                <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8">
+            <div class="container mt-6 mb-8 px-[60px] max-lg:px-8 max-md:mt-4 max-md:px-4">
+                <h2 class="text-lg md:text-xl font-semibold text-gray-900 mb-3 md:mb-4">@lang('Subcategories')</h2>
+                <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3 md:gap-4">
                     @foreach ($subCategories as $subCategory)
-                        <a href="{{ $subCategory->url }}" class="flex flex-col items-center justify-center p-6 bg-white rounded-2xl border border-gray-200 hover:border-navyBlue hover:shadow-lg transition-all duration-300">
+                        <a href="{{ $subCategory->url }}" class="group flex flex-col items-center justify-center p-2.5 sm:p-3 md:p-4 bg-white rounded-xl border border-gray-200 hover:border-navyBlue hover:shadow-md transition-all duration-300">
                             @if ($subCategory->logo_url)
-                                <img src="{{ $subCategory->logo_url }}" alt="{{ $subCategory->name }}" class="h-[130px] w-[130px] object-cover rounded-full mb-4 shadow-sm" />
+                                <img src="{{ $subCategory->logo_url }}" alt="{{ $subCategory->name }}" class="h-12 w-12 sm:h-14 sm:w-14 md:h-16 md:w-16 object-cover rounded-full mb-1.5 md:mb-2 shadow-sm group-hover:scale-105 transition-transform duration-300" />
                             @else
-                                <img src="{{ bagisto_asset('images/small-product-placeholder.webp') }}" alt="{{ $subCategory->name }}" class="h-[130px] w-[130px] object-cover rounded-full mb-4 shadow-sm" />
+                                <img src="{{ bagisto_asset('images/small-product-placeholder.webp') }}" alt="{{ $subCategory->name }}" class="h-12 w-12 sm:h-14 sm:w-14 md:h-16 md:w-16 object-cover rounded-full mb-1.5 md:mb-2 shadow-sm group-hover:scale-105 transition-transform duration-300" />
                             @endif
-                            <p class="text-lg text-black font-medium text-center mt-2">{{ $subCategory->name }}</p>
+                            <p class="text-xs sm:text-sm text-gray-800 font-medium text-center mt-1 line-clamp-2">{{ $subCategory->name }}</p>
                         </a>
                     @endforeach
                 </div>
