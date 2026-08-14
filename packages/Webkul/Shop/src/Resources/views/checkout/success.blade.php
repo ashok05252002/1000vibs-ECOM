@@ -8,6 +8,17 @@
 		@lang('shop::app.checkout.success.thanks')
     </x-slot>
 
+	<!-- Meta Pixel Purchase Tracking -->
+	<script>
+		fbq('track', 'Purchase', {
+			value: {{ $order->grand_total ?? 0 }},
+			currency: '{{ $order->order_currency_code ?? "AED" }}',
+			content_type: 'product',
+			order_id: '{{ $order->increment_id ?? "" }}'
+		});
+	</script>
+
+
 	<!-- Page content -->
 	<div class="container mt-8 px-[60px] max-lg:px-8">
 		<div class="grid place-items-center gap-y-5 max-md:gap-y-2.5">
