@@ -15,15 +15,9 @@ class Order extends Base
      */
     public function afterCreated(OrderContract $order)
     {
-        try {
-            if (! core()->getConfigData('emails.general.notifications.emails.general.notifications.new_order_mail_to_admin')) {
-                return;
-            }
-
-            $this->prepareMail($order, new CreatedNotification($order));
-        } catch (\Exception $e) {
-            report($e);
-        }
+        // Admin receives a BCC copy via Shop Order CreatedNotification.
+        // Disabled to prevent duplicate order emails.
+        return;
     }
 
     /**
