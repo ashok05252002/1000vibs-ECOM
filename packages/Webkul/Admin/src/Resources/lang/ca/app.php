@@ -5020,7 +5020,7 @@ return [
     ],
 
     'footer' => [
-        'copy-right' => 'Desenvolupat per <a href="https://bagisto.com/" target="_blank">Bagisto</a>, Un Projecte Comunitari per <a href="https://webkul.com/" target="_blank">Webkul</a>',
+        'copy-right' => 'Powered by <a href="https://bagisto.com/" target="_blank">Bagisto</a>, A Community Project by <a href="https://vetrik.com/" target="_blank">Vetrik Private Limited</a>',
     ],
 
     'emails' => [

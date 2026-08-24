@@ -302,7 +302,7 @@
 
                             <a
                                 class="bg-white text-blue-600 underline"
-                                href="https://webkul.com/"
+                                href="https://vetrik.com/"
                             >
                                 @lang('installer::app.installer.index.webkul')
                             </a>
