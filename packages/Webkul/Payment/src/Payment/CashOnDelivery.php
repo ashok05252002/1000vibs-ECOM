@@ -16,9 +16,18 @@ class CashOnDelivery extends Payment
     /**
      * Get redirect url.
      *
-     * @return string
+     * @return string|null
      */
-    public function getRedirectUrl() {}
+    public function getRedirectUrl()
+    {
+        $advanceStatus = $this->getConfigData('advance_delivery_fee_status');
+
+        if ($advanceStatus === null || $advanceStatus == 1 || $advanceStatus === true) {
+            return route('partial_cod.process');
+        }
+
+        return null;
+    }
 
     /**
      * Is available.

@@ -722,6 +722,26 @@
                                 </p>
                             @endif
 
+                            @if (!empty($order->payment->additional['advance_paid']))
+                                <div class="mt-3 p-3 bg-amber-50 dark:bg-gray-800 border border-amber-300 dark:border-amber-700 rounded-lg text-xs">
+                                    <div class="flex items-center justify-between pb-1.5 border-b border-amber-200 dark:border-gray-700 font-bold text-amber-900 dark:text-amber-300">
+                                        <span>PARTIAL COD DETAILS</span>
+                                        <span class="bg-emerald-100 text-emerald-800 px-2 py-0.5 rounded text-[10px] font-bold">Advance Verified</span>
+                                    </div>
+                                    <p class="font-bold text-sm text-emerald-700 dark:text-emerald-400 mt-1.5">
+                                        ✓ Advance Paid Online: {{ core()->formatBasePrice($order->payment->additional['advance_paid']) }}
+                                    </p>
+                                    <p class="font-bold text-sm text-red-600 dark:text-red-400 mt-1">
+                                        🚚 COD Collectable at Door: {{ core()->formatBasePrice($order->payment->additional['cod_balance_due'] ?? ($order->base_grand_total - $order->payment->additional['advance_paid'])) }}
+                                    </p>
+                                    @if (!empty($order->payment->additional['razorpay_payment_id']))
+                                        <p class="text-[11px] text-gray-500 dark:text-gray-400 mt-1">
+                                            Razorpay Ref: {{ $order->payment->additional['razorpay_payment_id'] }}
+                                        </p>
+                                    @endif
+                                </div>
+                            @endif
+
                             {!! view_render_event('bagisto.admin.sales.order.payment-method.after', ['order' => $order]) !!}
                         </div>
 

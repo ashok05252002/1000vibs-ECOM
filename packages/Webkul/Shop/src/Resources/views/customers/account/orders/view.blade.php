@@ -229,6 +229,20 @@
                             </table>
                         </div>
 
+                        @if (!empty($order->payment?->additional['advance_paid']))
+                            <div class="mt-6 p-4 rounded-xl bg-amber-50 border border-amber-200 text-amber-900 text-sm">
+                                <div class="flex items-center gap-2 font-bold text-amber-800 mb-1">
+                                    <span class="text-lg">🚚</span> Cash on Delivery Order Details
+                                </div>
+                                <p class="text-xs text-emerald-700 font-semibold">
+                                    ✓ Advance Delivery Fee Paid Online: {{ core()->formatPrice($order->payment->additional['advance_paid'], $order->order_currency_code) }}
+                                </p>
+                                <p class="text-xs text-amber-900 font-bold mt-1">
+                                    💵 Cash to Pay Courier upon Delivery: {{ core()->formatPrice($order->payment->additional['cod_balance_due'] ?? $order->total_due, $order->order_currency_code) }}
+                                </p>
+                            </div>
+                        @endif
+
                         <!-- Payment Details -->
                         <div class="mt-8 flex items-start gap-10 max-lg:gap-5">
                             <div class="flex-auto">

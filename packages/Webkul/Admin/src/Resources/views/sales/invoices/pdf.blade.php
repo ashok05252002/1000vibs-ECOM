@@ -640,6 +640,28 @@
                                     <b>{!! core()->formatBasePrice($invoice->base_grand_total, true) !!}</b>
                                 </td>
                             </tr>
+
+                            @if (!empty($invoice->order?->payment?->additional['advance_paid']))
+                                <tr>
+                                    <td style="color: #15803d;">
+                                        <b>Advance Paid (Online):</b>
+                                    </td>
+                                    <td>-</td>
+                                    <td style="color: #15803d;">
+                                        <b>{!! core()->formatBasePrice($invoice->order->payment->additional['advance_paid'], true) !!}</b>
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td style="color: #b91c1c; font-weight: bold;">
+                                        <b>COD Due on Delivery:</b>
+                                    </td>
+                                    <td>-</td>
+                                    <td style="color: #b91c1c; font-weight: bold;">
+                                        <b>{!! core()->formatBasePrice($invoice->order->payment->additional['cod_balance_due'] ?? ($invoice->base_grand_total - $invoice->order->payment->additional['advance_paid']), true) !!}</b>
+                                    </td>
+                                </tr>
+                            @endif
                         </tbody>
                     </table>
                 </div>

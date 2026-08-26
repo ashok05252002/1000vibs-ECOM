@@ -121,8 +121,8 @@
                             <template v-else>
                                 <x-shop::button
                                     type="button"
-                                    class="primary-button w-max rounded-2xl bg-navyBlue px-11 py-3 max-md:mb-4 max-md:w-full max-md:max-w-full max-md:rounded-lg max-sm:py-1.5"
-                                    :title="trans('shop::app.checkout.onepage.summary.place-order')"
+                                    class="primary-button w-max rounded-2xl bg-navyBlue px-8 py-3 max-md:mb-4 max-md:w-full max-md:max-w-full max-md:rounded-lg max-sm:py-2 text-base font-bold shadow-lg hover:shadow-xl transition-all"
+                                    ::title="placeOrderButtonTitle"
                                     ::disabled="isPlacingOrder"
                                     ::loading="isPlacingOrder"
                                     @click="placeOrder"
@@ -210,6 +210,24 @@
                         paymentMethods: null,
 
                         canPlaceOrder: false,
+                    }
+                },
+
+                computed: {
+                    placeOrderButtonTitle() {
+                        if (! this.cart) {
+                            return "{{ trans('shop::app.checkout.onepage.summary.place-order') }}";
+                        }
+
+                        if (this.cart.payment_method === 'cashondelivery' && this.cart.is_partial_cod) {
+                            return "Pay " + (this.cart.formatted_cod_advance_amount || '₹120') + " Advance & Confirm COD";
+                        }
+
+                        if (this.cart.payment_method === 'razorpay') {
+                            return "Pay " + this.cart.formatted_grand_total + " Online (Free Delivery)";
+                        }
+
+                        return "{{ trans('shop::app.checkout.onepage.summary.place-order') }}";
                     }
                 },
 

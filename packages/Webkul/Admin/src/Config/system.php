@@ -1880,6 +1880,21 @@ return [
                 'channel_based' => true,
                 'locale_based'  => false,
             ], [
+                'name'          => 'advance_delivery_fee_status',
+                'title'         => 'Require Upfront Delivery Fee (Partial COD)',
+                'type'          => 'boolean',
+                'default_value' => true,
+                'channel_based' => true,
+                'locale_based'  => false,
+            ], [
+                'name'          => 'advance_delivery_fee_amount',
+                'title'         => 'Upfront Delivery Fee Amount (INR)',
+                'type'          => 'text',
+                'default_value' => '120',
+                'channel_based' => true,
+                'locale_based'  => false,
+                'info'          => 'Amount customer must pay online upfront for COD. Remaining balance is paid at delivery.',
+            ], [
                 'name'          => 'active',
                 'title'         => 'admin::app.configuration.index.sales.payment-methods.status',
                 'type'          => 'boolean',
