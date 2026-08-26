@@ -140,17 +140,7 @@
         </p>
 
         <p class="text-base font-medium max-sm:text-sm">
-            <template v-if="cart.payment_method === 'razorpay'">
-                <span class="text-emerald-600 font-bold">FREE (Saved ₹@{{ cart.cod_advance_amount || 120 }} on Prepaid)</span>
-            </template>
-
-            <template v-else-if="cart.payment_method === 'cashondelivery' && cart.is_partial_cod">
-                <span class="text-amber-800 font-bold">+ @{{ cart.formatted_cod_advance_amount }} (Delivery charge to be paid now)</span>
-            </template>
-
-            <template v-else>
-                @{{ cart.formatted_shipping_amount }}
-            </template>
+            @{{ cart.formatted_shipping_amount }}
         </p>
     </div>
 
@@ -225,62 +215,9 @@
         </p>
 
         <p class="text-lg font-semibold max-sm:text-sm">
-            <template v-if="cart.payment_method === 'cashondelivery' && cart.is_partial_cod">
-                @{{ cart.formatted_cod_total_amount }}
-            </template>
-            <template v-else>
-                @{{ cart.formatted_grand_total }}
-            </template>
+            @{{ cart.formatted_grand_total }}
         </p>
     </div>
 
     {!! view_render_event('bagisto.shop.checkout.onepage.summary.grand_total.after') !!}
-
-    <!-- COD vs Prepaid Breakdown Callout -->
-    <div
-        v-if="cart.payment_method === 'cashondelivery' && cart.is_partial_cod"
-        class="mt-4 rounded-2xl bg-amber-50/90 border-2 border-amber-200 p-3.5 sm:p-4 text-left shadow-sm"
-    >
-        <div class="flex items-center justify-between text-amber-950 border-b border-amber-200/80 pb-2 mb-2.5">
-            <span class="text-xs font-bold uppercase tracking-wider flex items-center gap-1.5">
-                <span>🚚</span> COD Payment Summary
-            </span>
-            <span class="text-xs font-extrabold text-amber-900 bg-amber-100 px-2 py-0.5 rounded-full border border-amber-200">
-                Total: @{{ cart.formatted_cod_total_amount }}
-            </span>
-        </div>
-        
-        <div class="space-y-2 text-xs sm:text-sm">
-            <div class="flex items-center justify-between text-blue-900 bg-blue-50 px-3 py-2 rounded-xl font-bold border border-blue-100 shadow-xs">
-                <span class="flex items-center gap-1.5">
-                    <span>💳</span> Pay Online Advance Now:
-                </span>
-                <span class="text-sm sm:text-base font-extrabold text-blue-700">@{{ cart.formatted_cod_advance_amount }}</span>
-            </div>
-
-            <div class="flex items-center justify-between text-gray-800 bg-white px-3 py-2 rounded-xl border border-amber-200/70 shadow-xs">
-                <span class="flex items-center gap-1.5 font-medium">
-                    <span>💵</span> Cash on Delivery at Doorstep:
-                </span>
-                <span class="font-bold text-gray-950 text-sm sm:text-base">@{{ cart.formatted_cod_balance_amount }}</span>
-            </div>
-        </div>
-
-        <p class="text-[11px] text-amber-900 mt-2.5 pt-2 border-t border-amber-200/80 leading-relaxed font-medium">
-            ℹ️ <strong>@{{ cart.formatted_cod_advance_amount }}</strong> is an extra delivery fee for COD orders paid in advance online now. Pay remaining <strong>@{{ cart.formatted_cod_balance_amount }}</strong> in cash at your doorstep upon arrival.
-        </p>
-    </div>
-
-    <!-- Prepaid Free Delivery Reward Callout -->
-    <div
-        v-else-if="cart.payment_method === 'razorpay'"
-        class="mt-4 rounded-2xl bg-emerald-50/90 border-2 border-emerald-200 p-3.5 sm:p-4 text-center text-emerald-900 shadow-sm"
-    >
-        <p class="text-xs sm:text-sm font-bold flex items-center justify-center gap-1 text-emerald-800">
-            <span>🎉</span> You're saving ₹@{{ cart.cod_advance_amount || 120 }} with Free Delivery!
-        </p>
-        <p class="text-[11px] sm:text-xs text-emerald-700 mt-1">
-            Zero extra delivery charges. 100% Secure UPI / Card Payment.
-        </p>
-    </div>
 </div>
