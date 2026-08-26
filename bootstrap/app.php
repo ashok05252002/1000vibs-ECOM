@@ -33,9 +33,12 @@ return Application::configure(basePath: dirname(__DIR__))
          * then remove this line.
          */
         $middleware->remove(ConvertEmptyStringsToNull::class);
-$middleware->validateCsrfTokens(except: [
-    '/razorpaycheck',
-]);
+        $middleware->validateCsrfTokens(except: [
+            '/razorpaycheck',
+            'razorpaycheck',
+            '/partial-cod-check',
+            'partial-cod-check',
+        ]);
         $middleware->append(SecureHeaders::class);
         $middleware->append(CanInstall::class);
 

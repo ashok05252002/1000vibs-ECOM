@@ -163,6 +163,12 @@ class PartialCodController extends Controller
             }
 
             try {
+                // Ensure cart payment method is initialized if missing
+                if (! $cart->payment) {
+                    Cart::savePaymentMethod(['method' => 'cashondelivery']);
+                    $cart = Cart::getCart();
+                }
+
                 // Prepare order data from cart
                 $data = (new OrderResource($cart))->jsonSerialize();
 
@@ -182,8 +188,6 @@ class PartialCodController extends Controller
 
                 $data['grand_total'] = $orderTotal;
                 $data['base_grand_total'] = $orderTotal;
-                $data['grand_total_invoiced'] = $advanceAmount;
-                $data['base_grand_total_invoiced'] = $advanceAmount;
 
                 $data['payment'] = [
                     'method'       => 'cashondelivery',
